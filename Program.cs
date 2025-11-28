@@ -9,6 +9,9 @@
 // Importa utilidades para detectar el entorno (Desarrollo, Producción, etc.).
 
 // Importa utilidades para leer configuraciones desde archivos JSON.
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using webapicsharp.Modelos; // donde está ConfiguracionJwt
 
 // Crea el "builder": punto de inicio para configurar servicios y la aplicación.
@@ -206,7 +209,7 @@ builder.Services.Configure<ConfiguracionJwt>(
 var configuracionJwt = new ConfiguracionJwt();
 builder.Configuration.GetSection("Jwt").Bind(configuracionJwt);
 
-/*
+
 // Registra el servicio de autenticación basado en JWT Bearer.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opciones =>
@@ -225,7 +228,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             )
         };
     });
-*/
+
 
 
 // También registra la configuración de JWT para inyección de dependencias si se necesita en otros lugares.
